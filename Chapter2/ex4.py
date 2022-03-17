@@ -23,4 +23,5 @@ if __name__ == '__main__':
     a = int(args[1])
     b = int(args[2])
     r = ex4(a, b)
+
     print("r is {0}".format(r))
