@@ -24,7 +24,7 @@ def pow_mod(base, exponent, module):
         #count += 1
         if int(exponent) % 2 == 1:
             result = result * base % module
-            print(result)
+            #print(result)
         base = base * base
         exponent = int(exponent) / 2
     #print("試行回数:{0}".format(count))
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print("{0}^{1} = {2}".format(base, exponent, result))
 
     result = pow_mod(base, exponent, module)
-    print("{0}^{1} = {2}".format(base, exponent, result))
+    print("{0}^{1} == {2} mod {3}".format(base, exponent, result, module))
 
     answer = zakopow(base, exponent) 
     print("{0}^{1} = {2}".format(base, exponent, answer))
