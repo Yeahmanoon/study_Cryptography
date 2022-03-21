@@ -33,8 +33,10 @@ def xeuclid(a, b):
         xs[0] = xx
         ys[0] = yy
         sign = sign * (-1)
-    print("反復回数：{0}".format(count))
-    return a 
+    #print("反復回数：{0}".format(count))
+    x = sign * xs[0]
+    y = - sign * ys[0]
+    return a, x, y
 
 if __name__ == '__main__':
 
