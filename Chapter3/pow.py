@@ -17,13 +17,13 @@ def pow(base, exponent):
     return result
 
 #高速指数計算法+mod
-def pow_mod(base, exponent, module):
+def pow_mod(base, exponent, modulo):
     result = 1
     #count = 0
     while exponent > 0:
         #count += 1
         if int(exponent) % 2 == 1:
-            result = result * base % module
+            result = result * base % modulo
             #print(result)
         base = base * base
         exponent = int(exponent) / 2
@@ -46,13 +46,13 @@ if __name__ == '__main__':
 
     base = int(args[1])
     exponent = int(args[2])
-    module = int(args[3])
+    modulo = int(args[3])
 
     result = pow(base, exponent)
     print("{0}^{1} = {2}".format(base, exponent, result))
 
-    result = pow_mod(base, exponent, module)
-    print("{0}^{1} == {2} mod {3}".format(base, exponent, result, module))
+    result = pow_mod(base, exponent, modulo)
+    print("{0}^{1} == {2} mod {3}".format(base, exponent, result, modulo))
 
     answer = zakopow(base, exponent) 
     print("{0}^{1} = {2}".format(base, exponent, answer))
