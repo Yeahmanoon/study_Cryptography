@@ -21,7 +21,7 @@ def Prime_factorization(exponent):
                 list_prime.append(i)
     return list_prime
 
-def p3_14_1(exponent, list_prime, base, module):
+def p3_14_1(exponent, list_prime, base, modulo):
     e = {}
     f = {}
     count = 1
@@ -34,8 +34,8 @@ def p3_14_1(exponent, list_prime, base, module):
                 f[list_prime[i]] = 0
                 for j in range(1, count + 1, 1):
                     sub_exponent = exponent / (pow(list_prime[i], j))
-                    result = pow_mod(base, sub_exponent, module)
-                    print("{0}^{1} == {2} mod {3}".format(base, sub_exponent, result, module))
+                    result = pow_mod(base, sub_exponent, modulo)
+                    print("{0}^{1} == {2} mod {3}".format(base, sub_exponent, result, modulo))
                     if result == 1:
                         f[list_prime[i]] = j
                 count = 1
@@ -44,8 +44,8 @@ def p3_14_1(exponent, list_prime, base, module):
             f[list_prime[i]] = 0
             for j in range(1, count + 1, 1):
                 sub_exponent = exponent / (pow(list_prime[i], j))
-                result = pow_mod(base, sub_exponent, module)
-                print("{0}^{1} == {2} mod {3}".format(base, sub_exponent, result, module))
+                result = pow_mod(base, sub_exponent, modulo)
+                print("{0}^{1} == {2} mod {3}".format(base, sub_exponent, result, modulo))
                 if result == 1:
                     f[list_prime[i]] = j
     #print(e)
@@ -59,10 +59,10 @@ if __name__ == '__main__':
 
     args = sys.argv
 
-    exponent = int(args[1])#module の位数
+    exponent = int(args[1])#modulo の位数
     g = int(args[2])#調べたい元
-    module = int(args[3])
+    modulo = int(args[3])
     list_prime = Prime_factorization(exponent)
     print(list_prime)
-    order = p3_14_1(exponent, list_prime, g, module)
-    print("order ({0} + {1}ZZ) = {2}".format(g, module, order))
+    order = p3_14_1(exponent, list_prime, g, modulo)
+    print("order ({0} + {1}ZZ) = {2}".format(g, modulo, order))
