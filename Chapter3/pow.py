@@ -16,6 +16,20 @@ def pow(base, exponent):
     #print("試行回数:{0}".format(count))
     return result
 
+#高速指数計算法+mod
+def pow_mod(base, exponent, module):
+    result = 1
+    #count = 0
+    while exponent > 0:
+        #count += 1
+        if int(exponent) % 2 == 1:
+            result = result * base % module
+            print(result)
+        base = base * base
+        exponent = int(exponent) / 2
+    #print("試行回数:{0}".format(count))
+    return result
+
 #雑魚雑魚指数計算法
 def zakopow(base, exponent):
     result = 1
@@ -32,8 +46,12 @@ if __name__ == '__main__':
 
     base = int(args[1])
     exponent = int(args[2])
+    module = int(args[3])
 
     result = pow(base, exponent)
+    print("{0}^{1} = {2}".format(base, exponent, result))
+
+    result = pow_mod(base, exponent, module)
     print("{0}^{1} = {2}".format(base, exponent, result))
 
     answer = zakopow(base, exponent) 
