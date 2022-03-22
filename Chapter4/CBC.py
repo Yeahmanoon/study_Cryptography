@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# CBC.py
+# CFB.py
 #ASCII(0~127) コード用
 
 import sys
@@ -17,8 +17,8 @@ def changeTo2from10(num, lim):
         d = d // 2
     return bin_num
 
-#暗号化関数(CBC)
-def E_CBC(plaintext, key, c0, lim):
+#暗号化関数(CFB)
+def E_CFB(plaintext, key, c0, lim):
     ciphertext = ""
     bin_c = changeTo2from10(c0, lim)
     #print("bin_c {0}".format(bin_c))
@@ -41,15 +41,14 @@ def E_CBC(plaintext, key, c0, lim):
                 bin_c = changeTo2from10(key[1][j], lim)
     return ciphertext 
     
-#復号化関数(CBC)
-def D_CBC(ciphertext, key, c0, lim):
+#復号化関数(CFB)
+def D_CFB(ciphertext, key, c0, lim):
     plaintext = ""
     bin_c = changeTo2from10(c0, lim)
     for i in range(0, len(ciphertext), 1):
         for j in range(0, lim, 1):
             if ord(ciphertext[i]) == key[1][j]:
-                num_ASCII = key[0][j]
-        bin_ciphertext = changeTo2from10(num_ASCII, lim)
+                bin_ciphertext = changeTo2from10(key[0][j], lim)
         print("bin_c          {0} in D".format(bin_c))
         print("bin_ciphertext {0} in D".format(bin_ciphertext))
         bin_plaintext = ""
@@ -88,7 +87,7 @@ if __name__ == '__main__':
             a = - (i + permutation) // lim + 1
             key[1].append(i + permutation + lim * a)
     print("c0             {0}".format(changeTo2from10(c0, lim)))
-    ciphertext = E_CBC(plaintext, key, c0, lim)
+    ciphertext = E_CFB(plaintext, key, c0, lim)
     print(ciphertext)
-    plaintext = D_CBC(ciphertext, key, c0, lim)
+    plaintext = D_CFB(ciphertext, key, c0, lim)
     print(plaintext)
