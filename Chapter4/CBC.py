@@ -39,6 +39,7 @@ def E_CFB(plaintext, key, c0, lim):
             if int(bin_ciphertext, 2) == key[0][j]:
                 ciphertext = ciphertext + chr(key[1][j])
                 bin_c = changeTo2from10(key[1][j], lim)
+                break
     return ciphertext 
     
 #復号化関数(CFB)
@@ -49,6 +50,7 @@ def D_CFB(ciphertext, key, c0, lim):
         for j in range(0, lim, 1):
             if ord(ciphertext[i]) == key[1][j]:
                 bin_ciphertext = changeTo2from10(key[0][j], lim)
+                break
         print("bin_c          {0} in D".format(bin_c))
         print("bin_ciphertext {0} in D".format(bin_ciphertext))
         bin_plaintext = ""
